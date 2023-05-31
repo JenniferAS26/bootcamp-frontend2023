@@ -1,0 +1,51 @@
+body {
+    width: 100%;
+    height: 100vh;
+    border: 2px solid orange;
+    margin: 10px;
+}
+
+header {
+    width: 95%;
+    height: 140px;
+    border: 2px solid #22BABB;
+    margin: 10px auto;
+}
+
+nav {
+    width: 85%;
+    height: 50px;
+    border: 2px solid #9E63B5;
+    margin: 45px auto;
+}
+
+div {
+    width: 95%;
+    height: 60%;
+    display: flex;
+    margin: 10px;
+    justify-content: space-evenly;
+    gap: 10px;
+}
+
+section {
+    width: 100%;
+    height: 100%;
+    border: 2px solid #A60522;
+}
+
+aside {
+    width: 100%;
+    height: 100%;
+    border: 2px solid #FAACC4;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 5px auto;
+}
+
+article {
+    width: 90%;
+    height: 185px;
+    border: 2px solid green;
+}
