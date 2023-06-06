@@ -1,0 +1,1 @@
+// alert('El index.js esta correctamente enlazado');
