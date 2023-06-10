@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="./styles.css">
+    <script src="https://kit.fontawesome.com/4825aba800.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <main class="container">
+        <div class="container-screen">
+            <label for="calc"></label>
+            <input type="number" class="screen-entry" id="calc">
+            <p class="screen-output">Result</p>
+        </div>
+        <section class="buttons-wrapper">
+            <div class="numbers-symb">
+                <div class="group-btns symb-btn">
+                    <button>C</button>
+                    <button>+-</button>
+                    <button>%</button>
+                </div>
+                <div class="group-btns num-btn">
+                    <button>7</button>
+                    <button>8</button>
+                    <button>9</button>
+                </div>
+                <div class="group-btns num-btn">
+                    <button>4</button>
+                    <button>5</button>
+                    <button>6</button>
+                </div>
+                <div class="group-btns num-btn">
+                    <button>1</button>
+                    <button>2</button>
+                    <button>3</button>
+                </div>
+                <div class="group-btns num-btn btn-last">
+                    <button>.</button>
+                    <button>0</button>
+                </div>    
+            </div>
+            <div class="operations-sym">
+                <button type="button"><i class="fa-solid fa-plus"></i></button>
+                <button type="button"><i class="fa-solid fa-minus"></i></button>
+                <button type="button"><i class="fa-solid fa-x"></i></button>
+                <button type="button"><i class="fa-solid fa-divide"></i></button>
+                <button type="button"><i class="fa-solid fa-equals"></i></button>
+            </div>
+        </section>
+    </main>
+
+    <script src="./app.js"></script>
+</body>
+</html>

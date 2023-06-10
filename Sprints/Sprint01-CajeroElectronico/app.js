@@ -13,33 +13,78 @@
  * 9.   Posteriormente, debe aparecer en consola, el dinero restante en el cajero por cada denominación
  */
 
+const billQuantity = {
+    bill_5: [0, 5000],
+    bill_10: [0, 10000],
+    bill_20: [0, 20000],
+    bill_50: [0, 50000],
+    bill_100: [0, 100000]
+}
+
+const loadATM = () => {
+    Object.keys(billQuantity).forEach(key => {
+        let quantity = Number.parseInt(prompt(`Digite la cantidad de billetes de $${key.split('_')[1]}000`));
+        // let quantity = 2;
+        billQuantity[key][0] = quantity;
+    });
+}
+
 const userList = [
     {
         name: 'Calos Montoya',
-        noDocument: 111111,
+        noDocument: 11,
         password: 0000,
         typeUsr: 'admin'
     },
     {
         name: 'Andres Lopez',
-        noDocument: 222222,
+        noDocument: 22,
         password: 0000,
         typeUsr: 'client'
     },
     {
         name: 'Valeria Aguirre',
-        noDocument: 333333,
+        noDocument: 33,
         password: 0000,
         typeUsr: 'client'
     },
     {
         name: 'Sandra Lopez',
-        noDocument: 444444,
+        noDocument: 44,
         password: 0000,
         typeUsr: 'admin'
     },
 ]
 
-const doc = 111111;
-const psw = 0000
+const documentNo = Number.parseInt(prompt(`Digite su documento`));
+const password = Number.parseInt(prompt(`Digite su contraseña`));
+// const documentNo = 111111;
+// const password = 0000;
 
+const filteredUsr = userList.filter(user => user.noDocument === documentNo);
+console.log(filteredUsr);
+
+if (filteredUsr.length > 0) {
+    if (filteredUsr[0].password === password) {
+        console.log(`Bienvenido señor ${filteredUsr[0].name}`);
+        if (filteredUsr[0].typeUsr === 'admin') {
+            loadATM();
+        } else {
+            console.log(`Usted es un cliente`);
+        }
+        
+    } else {
+        console.log(`Contraseña incorrecta, intente nuevamente`);
+    }
+} else {
+    console.log(`Ususario no encontrado`);
+}
+
+
+
+// console.log(Object.keys(billQuantity));
+
+
+
+
+console.log(billQuantity);
