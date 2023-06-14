@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cajero Electrónico</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Cajero Electrónico</h1>
+    <form id="login-form">
+      <input type="text" id="documento" placeholder="Documento">
+      <input type="password" id="contrasena" placeholder="Contraseña">
+      <button type="submit">Ingresar</button>
+    </form>
+    <div id="cajero" class="hidden">
+      <h2>Cargar Cajero</h2>
+      <form id="cajero-form">
+        <label for="billete-5">Billetes de 5 mil:</label>
+        <input type="number" id="billete-5">
+        <label for="billete-10">Billetes de 10 mil:</label>
+        <input type="number" id="billete-10">
+        <label for="billete-20">Billetes de 20 mil:</label>
+        <input type="number" id="billete-20">
+        <label for="billete-50">Billetes de 50 mil:</label>
+        <input type="number" id="billete-50">
+        <label for="billete-100">Billetes de 100 mil:</label>
+        <input type="number" id="billete-100">
+        <button type="submit">Cargar</button>
+      </form>
+    </div>
+    <div id="operaciones" class="hidden">
+      <h2>Realizar Operación</h2>
+      <button id="retiro">Retiro</button>
+    </div>
+    <div id="resultado" class="hidden">
+      <h2>Resultado del Retiro</h2>
+      <div id="billetes"></div>
+    </div>
+  </div>
+  <script src="./app.js"></script>
+</body>
+</html>
