@@ -3,9 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>ATM</title>
+    <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-    <script src="../../test.js"></script>
+    <div class="principal-container">
+        <section class="wrapper-welcome">
+            <button class="load" type="button">Cargar</button>
+            <h1>Bienvenido a su Cajero Electrónico</h1>
+            <button class="download" type="button">Retirar</button>
+        </section>
+        <section class="wrapper-credentials">
+            <form class="login">
+                <div class="input-container">
+                    <input 
+                        type="text"
+                        id="document"
+                        class="input__field"
+                        required
+                    />
+                    <label for="document" class="input__label">Documento</label>
+                </div>
+                <div class="input-container">
+                    <input 
+                        type="password"
+                        id="password"
+                        class="input__field"
+                        required
+                    />
+                    <label for="password" class="input__label">Contraseña</label>
+                </div>
+                <button type="button">Iniciar sesión</button>
+            </form>
+        </section>
+        <section class="wrapper-loadATM">
+            <h2>Cargue el cajero con los billetes de las siguientes denominaciones</h2>
+            <form class="loadATM">
+                <div class="input-container">
+                    <input 
+                        type="text"
+                        id="bill5"
+                        class="input__field"
+                        required
+                    />
+                    <label for="bill5" class="input__label">Billetes de $5000</label>
+                </div>
+                <div class="input-container">
+                    <input 
+                        type="text"
+                        id="bill10"
+                        class="input__field"
+                        required
+                    />
+                    <label for="bill10" class="input__label">Billetes de $10000</label>
+                </div>
+                <div class="input-container">
+                    <input 
+                        type="text"
+                        id="bill20"
+                        class="input__field"
+                        required
+                    />
+                    <label for="bill20" class="input__label">Billetes de $20000</label>
+                </div>
+                <div class="input-container">
+                    <input 
+                        type="text"
+                        id="bill50"
+                        class="input__field"
+                        required
+                    />
+                    <label for="bill50" class="input__label">Billetes de $50000</label>
+                </div>
+                <div class="input-container">
+                    <input 
+                        type="text"
+                        id="bill100"
+                        class="input__field"
+                        required
+                    />
+                    <label for="bill100" class="input__label">Billetes de $100000</label>
+                </div>
+                <button type="button">Cargar Cajero</button>
+            </form>
+        </section>
+        <section class="wrapper-withdrawATM">
+            <div class="left-container">
+                <button type="button">$20000</button>
+                <button type="button">$50000</button>
+            </div>
+            <div class="mid-container">
+                <h2>¿Qué cantidad desea retirar?</h2>
+                <div class="input-container">
+                    <input 
+                    type="text"
+                    id="quantity"
+                    class="input__field"
+                    disabled
+                    />
+                    <label for="quantity" class="input__label">Cantidad a retirar</label>
+                </div>
+            </div>
+            <div class="right-container">
+                <button type="button">$100000</button>
+                <button type="button">Otro valor</button>
+            </div>
+            
+        </section>
+    </div>
+    <script src="./inde.js"></script>
 </body>
 </html>
