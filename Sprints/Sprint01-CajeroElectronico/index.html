@@ -9,9 +9,9 @@
 <body>
     <div class="principal-container">
         <section class="wrapper-welcome">
-            <button class="load" type="button">Cargar</button>
+            <button class="load" type="button" onclick="loadATM()">Cargar</button>
             <h1>Bienvenido a su Cajero Electrónico</h1>
-            <button class="download" type="button">Retirar</button>
+            <button class="download" type="button" onclick="withdrawATM()">Retirar</button>
         </section>
         <section class="wrapper-credentials">
             <form class="login">
@@ -33,7 +33,7 @@
                     />
                     <label for="password" class="input__label">Contraseña</label>
                 </div>
-                <button type="button">Iniciar sesión</button>
+                <button type="button" onclick="authenticate()">Iniciar sesión</button>
             </form>
         </section>
         <section class="wrapper-loadATM">
@@ -41,50 +41,50 @@
             <form class="loadATM">
                 <div class="input-container">
                     <input 
-                        type="text"
+                        type="number"
                         id="bill5"
                         class="input__field"
                         required
                     />
-                    <label for="bill5" class="input__label">Billetes de $5000</label>
+                    <label for="bill5" class="input__label">Billetes de $5.000</label>
                 </div>
                 <div class="input-container">
                     <input 
-                        type="text"
+                        type="number"
                         id="bill10"
                         class="input__field"
                         required
                     />
-                    <label for="bill10" class="input__label">Billetes de $10000</label>
+                    <label for="bill10" class="input__label">Billetes de $10.000</label>
                 </div>
                 <div class="input-container">
                     <input 
-                        type="text"
+                        type="number"
                         id="bill20"
                         class="input__field"
                         required
                     />
-                    <label for="bill20" class="input__label">Billetes de $20000</label>
+                    <label for="bill20" class="input__label">Billetes de $20.000</label>
                 </div>
                 <div class="input-container">
                     <input 
-                        type="text"
+                        type="number"
                         id="bill50"
                         class="input__field"
                         required
                     />
-                    <label for="bill50" class="input__label">Billetes de $50000</label>
+                    <label for="bill50" class="input__label">Billetes de $50.000</label>
                 </div>
                 <div class="input-container">
                     <input 
-                        type="text"
+                        type="number"
                         id="bill100"
                         class="input__field"
                         required
                     />
-                    <label for="bill100" class="input__label">Billetes de $100000</label>
+                    <label for="bill100" class="input__label">Billetes de $10.0000</label>
                 </div>
-                <button type="button">Cargar Cajero</button>
+                <button type="button" onclick="loadATM()">Cargar Cajero</button>
             </form>
         </section>
         <section class="wrapper-withdrawATM">
@@ -99,18 +99,17 @@
                     type="text"
                     id="quantity"
                     class="input__field"
-                    disabled
                     />
                     <label for="quantity" class="input__label">Cantidad a retirar</label>
                 </div>
             </div>
             <div class="right-container">
                 <button type="button">$100000</button>
-                <button type="button">Otro valor</button>
+                <button type="button" onclick="withdrawATM()">Otro valor</button>
             </div>
             
         </section>
     </div>
-    <script src="./inde.js"></script>
+    <script src="./indexFunc.js"></script>
 </body>
 </html>

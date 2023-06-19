@@ -13,26 +13,33 @@
  * 9.   Posteriormente, debe aparecer en consola, el dinero restante en el cajero por cada denominación
  */
 
-const billQuantity = {
-    bill_5: [0, 5000, 0],
-    bill_10: [0, 10000, 0],
-    bill_20: [0, 20000, 0],
-    bill_50: [0, 50000, 0],
-    bill_100: [0, 100000, 0]
-}
+// const billQuantity = { // [quantity, value, totalQuantity]
+//     bill_5: [0, 5000, 0],
+//     bill_10: [0, 10000, 0],
+//     bill_20: [0, 20000, 0],
+//     bill_50: [0, 50000, 0],
+//     bill_100: [0, 100000, 0]
+// }
+
+const formLogin = document.querySelector('.login');
+const formLoadATM = document.querySelector('.loadATM');
+
+let ATM = [];
 
 const startATM = () => {
     let loaded = false;
-    while (true) {
+    //while (true) {
         let auth = authenticate();
         if (auth === 'admin') {
             loadATM();
             totalLoadATM();
+            withdrawATM();
             loaded = true;
         } else if (auth === 'client') {
             if (loaded) {
                 console.log(`Esto es un cliente`);
                 console.log(billQuantity);
+                withdrawATM();
             } else {
                 console.log(`Cajero en mantenimiento, vuelva pronto.`);
             }
@@ -40,23 +47,52 @@ const startATM = () => {
         } else {
             console.log(`Revise credenciales`);
         }
-    }
+    //}
 }
 
 const loadATM = () => {
-    Object.keys(billQuantity).forEach(key => {
-        let quantity = Number.parseInt(prompt(`Digite la cantidad de billetes de $${key.split('_')[1]}000`));
-        // let quantity = 2;
-        billQuantity[key][0] = billQuantity[key][0] + quantity;
-        billQuantity[key][2] = billQuantity[key][0] * billQuantity[key][1];
-    });
+    // Object.keys(billQuantity).forEach(key => {
+    //     // let quantity = Number.parseInt(prompt(`Digite la cantidad de billetes de $${key.split('_')[1]}000`));
+    //     let quantity = 2;
+    //     billQuantity[key][0] = billQuantity[key][0] + quantity;
+    //     billQuantity[key][2] = billQuantity[key][0] * billQuantity[key][1];
+    // });
+    let bill5 = Number.parseInt(document.getElementById("bill5").value, 10) || 0;
+    let bill10 = Number.parseInt(document.getElementById("bill10").value, 10) || 0;
+    let bill20 = Number.parseInt(document.getElementById("bill20").value, 10) || 0;
+    let bill50 = Number.parseInt(document.getElementById("bill50").value, 10) || 0;
+    let bill100 = Number.parseInt(document.getElementById("bill100").value, 10) || 0;
+    ATM = [
+        {
+            amount: 5000,
+            quantity: bill5
+        },
+        {
+            amount: 10000,
+            quantity: bill10
+        },
+        {
+            amount: 20000,
+            quantity: bill20
+        },
+        {
+            amount: 50000,
+            quantity: bill50
+        },
+        {
+            amount: 100000,
+            quantity: bill100
+        }
+    ]
+    totalLoadATM();
 }
 
 const totalLoadATM = () => {
     let totalQuantityATM = 0;
-    Object.keys(billQuantity).forEach(key => {
-        totalQuantityATM += billQuantity[key][2] 
+    Object.keys(ATM).forEach(key => {
+        totalQuantityATM += ATM[key].quantity * ATM[key].amount;
     });
+    console.log(ATM);
     console.log(totalQuantityATM);
     return totalQuantityATM;
 }
@@ -89,10 +125,8 @@ const userList = [
 ]
 
 const authenticate = () => {
-    const documentNo = Number.parseInt(prompt(`Digite su documento`), 10);
-    const password = Number.parseInt(prompt(`Digite su contraseña`), 10);
-    // const documentNo = 11;
-    // const password = 1234;
+    const documentNo = Number.parseInt(document.getElementById("document").value, 10);
+    const password = Number.parseInt(document.getElementById("password").value, 10);
 
     const filteredUsr = userList.filter(user => user.noDocument === documentNo);
     console.log(filteredUsr);
@@ -115,5 +149,47 @@ const authenticate = () => {
 
 }
 
+const withdrawATM = () => {
+    let total = 0;
+    Object.keys(ATM).forEach(key => {
+        total += ATM[key].quantity;
+        console.log(ATM[key].quantity);
+    });
+    // console.log(total);
+    if (total === 0) {
+        console.log("Cajero en mantenimiento, vuelva pronto.");
+        return;
+    }
+    
+    const montoDeseado = Number.parseInt(document.getElementById("quantity").value, 10);
+    console.log(montoDeseado);
+    const withdrawal = {};
+    let montoRestante = montoDeseado;
+
+    ATM.sort((a, b) => b[1] - a[1]);
+    console.log(ATM.sort((a, b) => b.amount- a.amount));
+    Object.keys(ATM).forEach(bill => {
+    const denominacion = bill.amount;
+    const cantidadDisponible = bill.quantity;
+
+    if (montoRestante >= denominacion && cantidadDisponible > 0) {
+        const cantidadEntregada = Math.floor(montoRestante / denominacion);
+        const cantidadRetirada = Math.min(cantidadEntregada, cantidadDisponible);
+        withdrawal[denominacion] = cantidadRetirada;
+        montoRestante -= denominacion * cantidadRetirada;
+        billete.cantidad -= cantidadRetirada;
+    } else {
+        withdrawal[denominacion] = 0;
+    }
+    });
+
+    if (montoRestante === 0) {
+    console.log(`Monto retirado: ${montoDeseado}`);
+    mostrarResultado(retiro);
+    } else {
+    console.log("No se puede retirar la cantidad solicitada.");
+    }
+    
+}
+
 startATM();
-console.log(billQuantity);
