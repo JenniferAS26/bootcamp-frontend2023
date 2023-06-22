@@ -1,0 +1,2 @@
+# Cajero
+- El cajero cuenta con la los requerimientos del sprint y esta pensando para que en el futuro esté integrado con un archivo de estilos, y un HTML funcional, en esta primera fase solo está el esquema de como se verá en un futuro con algunas animaciones de botones más el formulario no es funcional.
