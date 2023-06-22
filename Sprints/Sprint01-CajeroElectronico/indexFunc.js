@@ -31,12 +31,13 @@ let ATM = [
 
 // Funcion para iniciar sesion
 const login = () => {
-    const document = prompt('Documento:');
-    const password = prompt('Contraseña:');
+    const document = prompt('Documento:').toLowerCase().trim(); // pequeña ayuda al usuario por si ingresa espacios vacios al principio y al final
+    const password = prompt('Contraseña:').trim(); // pequeña validacion de seguridad 
     const userFound = users.find(user => user.document === document);
     if (userFound.password === password) {
         if (userFound.typeUser === 'admin') {
             ATM = chargeATM();
+            printBills();
             login();
         } else {
             withdrawATM();
@@ -45,6 +46,7 @@ const login = () => {
         }   
     } else {
         console.log('Usuario o contraseña incorrecto, intente de nuevo');
+        alert('Usuario o contraseña incorrecto, intente de nuevo');
         login();
     }
     
@@ -60,12 +62,8 @@ const chargeATM = () => {
     const totalMoneyArray = newATMCharged.map(pair => pair.amount * pair.quantity);
     const totalMoneyAvialable = totalMoneyArray.reduce((a, b) => {
         return a + b;
-    }, 0)
-    // console.log(totalMoneyArray);
-    console.log(totalMoneyAvialable);
-    console.log('Cajero cargado...');
-    console.log(newATMCharged);
-    
+    }, 0);
+    alert(`El cajero tiene $${totalMoneyAvialable} de saldo`);
     return newATMCharged;
 }
 
@@ -94,31 +92,30 @@ const withdrawATM = () => {
                     remainingMoney -= currentAmount * quantityWithdraw;
                     pair.quantity -= quantityWithdraw;
                     withdrawATM[currentAmount] = quantityWithdraw;
-                } /*else {
-                    withdrawATM[currentAmount] = 0;
-                }*/
+                }
             });
             if (remainingMoney === 0) {
                 console.log(`La cantidad retirada es: $${moneyToWithdraw}`);
                 console.log('En billetes de:');
                 Object.keys(withdrawATM).forEach(amount => {
                     const quantity = withdrawATM[amount];
-                    // console.log(`Denominacion: ${amount}, la cantidad de: ${quantity}`);
-                    console.log(`${quantity} billete de ${amount}`);
+                    console.log(`${quantity} billete(s) de $${amount}`);
                 })
             } else {
                 console.log('La cantidad solicitada no se puede retirar');
+                alert('La cantidad solicitada no se puede retirar');
             }
         }
     } else {
-        alert('Cajero en mantenimiento, vuelva pronto')
+        alert('Cajero en mantenimiento, vuelva pronto');
+        login();
     }
 }
 
 const printBills = () => {
     console.log('El cajero tiene disponible');
     ATM.forEach(pair => {
-        console.log(`${pair.quantity} billete de ${pair.amount}`);
+        console.log(`${pair.quantity} billete(s) de $${pair.amount}`);
     })
 }
 
