@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios manejo del DOM</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <main class="wrapper">
+        <section class="users-container">
+            <form class="users-form">
+                <div class="input-container">
+                    <input type="text" class="input__field" id="input-name" required>
+                    <label for="input-name" class="input__label" >Nombre</label>
+                </div>
+                <div class="input-container">
+                    <input type="text" class="input__field" id="input-lastname" required>
+                    <label for="input-lastname" class="input__label" >Apellido</label>
+                </div>
+                <div class="input-container">
+                    <input type="text" class="input__field" id="input-telephone" required>
+                    <label for="input-telephone" class="input__label" >Teléfono</label>
+                </div>
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
+        <section class="gender-container">
+            <form class="gender-form">
+                <p>Escoja su genero</p>
+                <div class="female-container input-group">
+                    <input type="radio" name="gender" id="female" checked class="input-group__input">
+                    <label for="female" class="input-group__label">Femenino</label>
+                </div>
+                <div class="male-container input-group">
+                    <input type="radio" name="gender" id="male" class="input-group__input">
+                    <label for="male" class="input-group__label">Masculino</label>
+                </div>
+                <div class="nonbin-container input-group">
+                    <input type="radio" name="gender" id="nonbinary" class="input-group__input">
+                    <label for="nonbinary" class="input-group__label">No Binario</label>
+                </div>
+            </form>
+        </section>
+        <section class="counter-container">
+            <div class="counter-wrapper">
+                <button 
+                type="button" 
+                id="counter-minus"
+                class="counter-btn">-</button>
+                <span id="counter-message">1</span>
+                <button 
+                type="button" 
+                id="counter-plus"
+                class="counter-btn">+</button>
+            </div>
+            
+        </section>
+    </main>
+    
+    <script src="./index.js"></script>
+</body>
+</html>
